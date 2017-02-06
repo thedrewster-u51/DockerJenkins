@@ -12,9 +12,8 @@ pipeline {
                 sh 'echo Testing Done'
             }
         }
-	stage 'Approval' 
-	timeout(time:7, unit: 'DAYS') {
-		input message: 'Do you want to deploy?', submitter: 'aarcher'
+	stage('Approval') 
+	    input message: 'Do you want to deploy?', submitter: 'aarcher'
         }
         stage('Deploy') {
 	    when {
