@@ -13,11 +13,13 @@ pipeline {
             }
         }
 	stage('Deploy') {
-  		input "Deploy?"
+	    steps {
+  	        input "Deploy?"
 		milestone()
 		node {
-			echo "Deploying"
+		    echo "Deploying"
 		}
+	    }
 	}
     }
 }
