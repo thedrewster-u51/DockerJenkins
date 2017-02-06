@@ -16,9 +16,7 @@ pipeline {
 	    steps {
   	        input "Deploy?"
 		milestone()
-		node {
-		    echo "Deploying"
-		}
+		sh 'echo Deploying'
 	    }
 	}
     }
