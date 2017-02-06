@@ -13,9 +13,9 @@ pipeline {
             }
         }
 	stage('Deploy') {
+	    milestone()
 	    steps {
   	        input "Deploy?"
-		milestone()
 		sh 'echo Deploying'
 	    }
 	}
