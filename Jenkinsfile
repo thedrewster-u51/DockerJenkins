@@ -12,18 +12,12 @@ pipeline {
                 sh 'echo Testing Done'
             }
         }
-	stage('Approval') {
-	    steps {
-	    	input message: 'Do you want to deploy?', submitter: 'aarcher'
-	    }
-        }
-        stage('Deploy') {
-	    when {
-		branch '*/master'
-	    }
-            steps {
-		sh 'echo Deployed!'	
-            }
-        }
+	stage('Deploy') {
+  		input "Deploy?"
+		milestone()
+		node {
+			echo "Deploying"
+		}
+	}
     }
 }
