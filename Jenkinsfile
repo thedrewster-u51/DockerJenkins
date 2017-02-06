@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Deploy') {
 	    when {
-		currentBuild.result == 'SUCCESS'
+		branch '*/master'
 	    }
             steps {
 		input 'Deploy to Staging?'
