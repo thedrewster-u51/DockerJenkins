@@ -12,7 +12,7 @@ pipeline {
                 sh 'echo Testing Done'
             }
         }
-	stage('Approval') 
+	stage('Approval') {
 	    input message: 'Do you want to deploy?', submitter: 'aarcher'
         }
         stage('Deploy') {
