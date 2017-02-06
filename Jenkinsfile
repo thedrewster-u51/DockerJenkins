@@ -13,8 +13,9 @@ pipeline {
             }
         }
         stage('Deploy') {
+	    when { currentBuild.result == 'SUCCESS' }
             steps {
-                sh 'echo Deploy to Staging Complete.'
+		input 'Deploy to Staging?'
             }
         }
     }
