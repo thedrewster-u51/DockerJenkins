@@ -13,7 +13,9 @@ pipeline {
             }
         }
         stage('Deploy') {
-	    when { currentBuild.result == 'SUCCESS' }
+	    when {
+		currentBuild.result == 'SUCCESS'
+	    }
             steps {
 		input 'Deploy to Staging?'
             }
