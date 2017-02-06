@@ -13,7 +13,9 @@ pipeline {
             }
         }
 	stage('Approval') {
-	    input message: 'Do you want to deploy?', submitter: 'aarcher'
+	    steps {
+	    	input message: 'Do you want to deploy?', submitter: 'aarcher'
+	    }
         }
         stage('Deploy') {
 	    when {
