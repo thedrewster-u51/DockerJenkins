@@ -1,10 +1,10 @@
 pipeline {
-    agent any // <1>
+    agent any
 
     stages {
-        stage('Build') { // <2>
-            steps { // <3>
-                sh 'docker build -t myapp:latest .' // <4>
+        stage('Build') {
+            steps {
+                sh 'docker build -t myapp:latest .'
             }
         }
         stage('Test'){
