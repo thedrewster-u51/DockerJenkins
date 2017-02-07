@@ -9,15 +9,26 @@ pipeline {
         }
         stage('Test'){
             steps {
-                sh 'echo Testing Done'
+                parallel linux: {
+                    echo "Running in Linux"
+                },
+                windows: {
+                    echo "Running in Windows"
+                }
             }
         }
 	stage('Deploy') {
-	    milestone()
 	    steps {
-  	        input "Deploy?"
-		sh 'echo Deploying'
+	        milestone 10
+            input "Deploy?"
+            milestone 20
+            sh 'docker stop myapperat || true'
+            sh 'docker rm myapperat || true'
+            sh 'docker run -d -p 3001:3000 --name myapperat myapp:latest'
+            echo 'Deploy complete'
+            
 	    }
 	}
     }
 }
+
